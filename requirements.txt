@@ -1,0 +1,8 @@
+openai==1.14.2
+requests==2.31.0
+py3-tts==3.5
+PyAudio==0.2.14
+py-espeak-ng==0.1.8
+simpleaudio==1.0.4
+SpeechRecognition==3.10.1
+opencv-python==4.9.0.80
