@@ -2,7 +2,7 @@
 
 This application is a mock code for Avatar AI using Python. The demo can be viewed on YouTube below.
 
-https://youtu.be/peaXa7jJX4Q
+https://www.youtube.com/watch?v=DqmPsKZJCJU
 
 ## 1. Install and run VOICEBOX
 
