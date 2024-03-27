@@ -12,14 +12,8 @@ import simpleaudio
 import speech_recognition
 from openai import OpenAI
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(encoding="utf-8", level=logging.INFO)
-logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
-
 VOICE_VOX_HOST = "127.0.0.1"
 VOICE_VOX_PORT = 50021
-
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 AVATAR_INFO = [
     {
         "video": "./Nene.mp4",
@@ -30,13 +24,17 @@ AVATAR_INFO = [
         "video": "./Rin.mp4",
         "name": "りん",
         "speaker": 10,
-    }
+    },
 ]
-
 AVATAR = AVATAR_INFO[random.randint(0, 1)]
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(encoding="utf-8", level=logging.INFO)
+logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
-def speak(text, speaker=AVATAR['speaker']):
+
+def speak(text, speaker=AVATAR["speaker"]):
     logging.info("processing voice vox...")
     params = (("text", text), ("speaker", speaker))
     logging.info("getting audio_query...")
@@ -95,8 +93,15 @@ def recognize_voice():
         speak("すいません。質問の意味が分かりませんでした。")
 
 
+def run_ai():
+    speak(f"こんにちは。{AVATAR['name']}です。何かご用ですか？")
+    while True:
+        recognize_voice()
+        speak("ほかにご用はございますか？")
+
+
 def display_video():
-    cap = cv2.VideoCapture(AVATAR['video'])
+    cap = cv2.VideoCapture(AVATAR["video"])
     if not cap.isOpened():
         logger.error("cannot open")
 
@@ -107,13 +112,6 @@ def display_video():
         cv2.imshow("Video", frame)
         if cv2.waitKey(25) & 0xFF == ord("q"):
             break
-
-
-def run_ai():
-    speak(f"こんにちは。{AVATAR['name']}です。何かご用ですか？")
-    while True:
-        recognize_voice()
-        speak("ほかにご用はございますか？")
 
 
 if __name__ == "__main__":
