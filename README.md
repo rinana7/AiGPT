@@ -20,7 +20,7 @@ Please download `Nene.mp4` and `Rin.mp4` below and place them in your local fold
 https://drive.google.com/drive/folders/1ZMgW_9IsD_AHIlBWX6CNj8fHvbX_VAk1?usp=sharing
 
 Configured the following.
-video is the location of the video file, name is the avatar's name, and speaker is the character's voice parameter. speaker can be changed to other numbers.
+Video is the location of the video file, name is the avatar's name, and speaker is the character's voice parameter. Speaker can be changed to other numbers.
 
 ```python
 AVATAR_INFO = [
